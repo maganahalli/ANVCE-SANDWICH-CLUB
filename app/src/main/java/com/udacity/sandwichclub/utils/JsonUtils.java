@@ -9,6 +9,9 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+/**
+ * Helper Class to parse JSON response for Sandwich Club project.
+ */
 public class JsonUtils {
 
 	public static Sandwich parseSandwichJson(String json) {

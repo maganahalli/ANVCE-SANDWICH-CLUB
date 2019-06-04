@@ -2,6 +2,9 @@ package com.udacity.sandwichclub.model;
 
 import java.util.List;
 
+/**
+ * POJO Data object representing Sandwich club details view.
+ */
 public class Sandwich {
 
     private String mainName;

@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.text.Html;
+import android.text.TextUtils;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -17,6 +18,7 @@ import com.udacity.sandwichclub.utils.JsonUtils;
  */
 public class DetailActivity extends AppCompatActivity {
 
+	public static final String DATA_NOT_AVAILABLE = "Data not available";
 	public static final String EXTRA_POSITION = "extra_position";
 	private static final int DEFAULT_POSITION = -1;
 
@@ -65,14 +67,15 @@ public class DetailActivity extends AppCompatActivity {
 	private void populateUI(Sandwich sandwich) {
 
 		TextView originTextView = findViewById(R.id.origin_tv);
-		originTextView.setText(sandwich.getPlaceOfOrigin());
+		originTextView.setText(sandwich.getPlaceOfOrigin().isEmpty() ? DATA_NOT_AVAILABLE : sandwich.getPlaceOfOrigin());
 
 		TextView alsoKnownAsView = findViewById(R.id.also_known_tv);
-		String aliasName = sandwich.getAlsoKnownAs().isEmpty() ? "" : sandwich.getAlsoKnownAs().get(0);
+		String aliasName = sandwich.getAlsoKnownAs().isEmpty() ? DATA_NOT_AVAILABLE : TextUtils.join(",", sandwich.getAlsoKnownAs());
 		alsoKnownAsView.setText(aliasName);
 
 		TextView ingredientsView = findViewById(R.id.ingredients_tv);
-		ingredientsView.setText(sandwich.getIngredients().toString());
+		String ingredients = sandwich.getIngredients().isEmpty() ? DATA_NOT_AVAILABLE : sandwich.getIngredients().toString();
+		ingredientsView.setText(ingredients);
 
 		TextView description = findViewById(R.id.description_tv);
 		description.setText(Html.fromHtml(sandwich.getDescription()));

@@ -70,8 +70,10 @@ public class DetailActivity extends AppCompatActivity {
 		TextView alsoKnownAsView = findViewById(R.id.also_known_tv);
 		String aliasName = sandwich.getAlsoKnownAs().isEmpty() ? "" : sandwich.getAlsoKnownAs().get(0);
 		alsoKnownAsView.setText(aliasName);
+
 		TextView ingredientsView = findViewById(R.id.ingredients_tv);
 		ingredientsView.setText(sandwich.getIngredients().toString());
+
 		TextView description = findViewById(R.id.description_tv);
 		description.setText(Html.fromHtml(sandwich.getDescription()));
 
